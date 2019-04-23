@@ -69,7 +69,7 @@ class Fib extends Component {
 
                 </form>
             </div>
-        )
+        );
     }
 }
 
