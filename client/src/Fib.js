@@ -51,23 +51,25 @@ class Fib extends Component {
     }
 
     render() {
-        <div>
-            <form onSubmit={this.handleSubmit}>
-                <label>Enter your value:</label>
-                <input
-                    value={this.state.value}
-                    onChange={event => this.setState({ value: event.target.value })}
-                />
-                <button>Submit</button>
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Enter your value:</label>
+                    <input
+                        value={this.state.value}
+                        onChange={event => this.setState({ value: event.target.value })}
+                    />
+                    <button>Submit</button>
 
-                <h3>Indexes I have seen:</h3>
-                {this.renderSeenIndexes()}
+                    <h3>Indexes I have seen:</h3>
+                    {this.renderSeenIndexes()}
 
-                <h3>Calculated Values:</h3>
-                {this.renderValues()}
+                    <h3>Calculated Values:</h3>
+                    {this.renderValues()}
 
-            </form>
-        </div>
+                </form>
+            </div>
+        )
     }
 }
 
