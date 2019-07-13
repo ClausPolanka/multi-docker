@@ -3,14 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t sageniuz/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t my/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run sageniuz/react-test npm test -- --coverage
+  - docker run my/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t sageniuz/multi-client ./client
-  - docker build -t sageniuz/multi-nginx ./nginx
-  - docker build -t sageniuz/multi-server ./server
-  - docker build -t sageniuz/multi-worker ./worker
-
+  - docker build -t my/multi-client ./client
+  - docker build -t my/multi-nginx ./nginx
+  - docker build -t my/multi-server ./server
+  - docker build -t my/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push my/multi-client
+  - docker push my/multi-nginx
+  - docker push my/multi-server
+  - docker push my/multi-worker
